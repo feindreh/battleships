@@ -6,6 +6,12 @@ const square = (x, y) => ({
   y,
   hit: false,
   ship: null,
+  getHit() {
+    this.hit = true;
+    if (this.ship !== null) {
+      this.ship.getAttackted();
+    }
+  },
 });
 
 const makeBoard = () => {
@@ -36,7 +42,7 @@ const gameBoard = () => ({
   receiveAttack(coordinates) {
     const x = coordinates[0];
     const y = coordinates[1];
-    this.board[x][y].hit = true;
+    this.board[x][y].getHit();
   },
   allSunk() {
     let sunk = true;
