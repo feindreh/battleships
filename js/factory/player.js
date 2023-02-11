@@ -12,4 +12,4 @@ const Player = (name) => ({
 
 });
 
-export Player
+export default Player;
