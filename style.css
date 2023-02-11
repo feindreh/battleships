@@ -8,11 +8,27 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 
+#container{
+    display:flex;
+    gap:50px;
+    flex-direction: column;
+}
+
+
 .row{
     display: flex;
 }
-.square{
-    width:50px;
-    height:50px;
+.square,.noshiphit,.shiphit{
+    width:40px;
+    height:40px;
     border: 1px solid black;
+}
+
+
+.noshiphit{
+    background-color: lightgrey;
+}
+
+.shiphit{
+    background-color:rgb(83, 7, 7);
 }
