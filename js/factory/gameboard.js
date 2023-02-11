@@ -33,6 +33,11 @@ const gameBoard = () => ({
       if (direction === 'right') { x++; }
     }
   },
+  receiveAttack(coordinates) {
+    const x = coordinates[0];
+    const y = coordinates[1];
+    this.board[x][y].hit = true;
+  },
 });
 
 export default gameBoard;
