@@ -18,11 +18,37 @@ const ship = () => ({
 
 });
 
-const destroyer = () => {
-  const destro = ship();
-  destro.name = 'destroyer';
-  destro.length = 3;
-  return destro;
-};
+const shipfactory = () => ({
+  carrier() {
+    const destro = ship();
+    destro.name = 'carrier';
+    destro.length = 5;
+    return destro;
+  },
+  battleship() {
+    const destro = ship();
+    destro.name = 'battleship';
+    destro.length = 4;
+    return destro;
+  },
+  submarine() {
+    const destro = ship();
+    destro.name = 'submarine';
+    destro.length = 3;
+    return destro;
+  },
+  destroyer() {
+    const destro = ship();
+    destro.name = 'destroyer';
+    destro.length = 3;
+    return destro;
+  },
+  patrolBoat() {
+    const destro = ship();
+    destro.name = 'patrol boat';
+    destro.length = 2;
+    return destro;
+  },
+});
 
-export default destroyer;
+export default shipfactory;
