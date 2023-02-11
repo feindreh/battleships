@@ -45,3 +45,19 @@ test('place Ship length 3 up', () => {
     });
   });
 });
+
+test('hit unhit square', () => {
+  const Board = gameBoard();
+
+  Board.receiveAttack([3, 4]);
+
+  Board.board.forEach((row) => {
+    row.forEach((square) => {
+      if (square.x === 3 && square.y === 4) {
+        expect(square.hit).toBe(true);
+      } else {
+        expect(square.hit).toBe(false);
+      }
+    });
+  });
+});
