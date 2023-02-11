@@ -61,3 +61,22 @@ test('hit unhit square', () => {
     });
   });
 });
+
+test('ship is alive', () => {
+  const Board = gameBoard();
+  const mock = {
+    sunk: false,
+  };
+  Board.board[0][0].ship = mock;
+
+  expect(Board.allSunk()).toBe(false);
+});
+
+test('ship still alive', () => {
+  const Board = gameBoard();
+  const mock = {
+    sunk: true,
+  };
+  Board.board[0][0].ship = mock;
+  expect(Board.allSunk()).toBe(true);
+});
