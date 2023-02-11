@@ -1,6 +1,6 @@
 import gameBoard from '../js/factory/gameboard';
 
-test('is a 7x7 grid', () => {
+test('is a 8x8 grid', () => {
   const Board = gameBoard();
 
   expect(Board.board.length).toBe(8);
