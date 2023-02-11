@@ -16,9 +16,9 @@ const square = (x, y) => ({
 
 const makeBoard = () => {
   const newBoard = [];
-  for (let x = 0; x <= 7; x++) {
+  for (let x = 0; x <= 9; x++) {
     const row = [];
-    for (let y = 0; y <= 7; y++) {
+    for (let y = 0; y <= 9; y++) {
       row.push(square(x, y));
     }
     newBoard.push(row);
