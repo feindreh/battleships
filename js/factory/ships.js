@@ -7,13 +7,13 @@ const ship = () => ({
     this.hits += 1;
   },
   isSunk() {
-    if (this.hits === this.length) { this.sunk = true; console.log(this.name, 'sunk'); }
+    if (this.hits === this.length) { this.sunk = true; }
   },
   getAttackted() {
     if (this.sunk) { console.log(this.name, 'already sunk'); return; }
     this.hit();
-    console.log(this.name, 'got hit');
     this.isSunk();
+    if (this.sunk) { console.log(this.name, 'sunk'); }
   },
 
 });
