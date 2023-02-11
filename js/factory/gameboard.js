@@ -38,6 +38,17 @@ const gameBoard = () => ({
     const y = coordinates[1];
     this.board[x][y].hit = true;
   },
+  allSunk() {
+    let sunk = true;
+    this.board.forEach((row) => {
+      row.forEach((squa) => {
+        if (squa.ship !== null) {
+          if (squa.ship.sunk === false) { sunk = false; }
+        }
+      });
+    });
+    return sunk;
+  },
 });
 
 export default gameBoard;
