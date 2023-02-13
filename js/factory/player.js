@@ -9,6 +9,7 @@ const Player = (name) => ({
   attack(target, coord) {
     target.getAttacked(coord);
   },
+  human: true,
 
 });
 
