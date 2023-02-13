@@ -7,10 +7,14 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: baseline;
 }
 
-
-#container{
+ #container{
     display:flex;
     gap:50px;
+    flex-direction: column;
+} 
+
+.gameBoard{
+    display: flex;
     flex-direction: column;
 }
 
@@ -18,7 +22,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .row{
     display: flex;
 }
-.square,.noshiphit,.shiphit{
+.square,.noshiphit,.shiphit,.shipsunk{
     width:40px;
     height:40px;
     border: 1px solid black;
@@ -26,9 +30,18 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 
 .noshiphit{
-    background-color: lightgrey;
+    background-color: rgb(104, 136, 167);
 }
 
 .shiphit{
-    background-color:rgb(83, 7, 7);
+    background-color:rgb(224, 43, 19);
+}
+
+.shipsunk{
+    background-color: rgb(12, 65, 209);
+}
+
+#Player{
+    scale:0.5;
+    pointer-events: none;
 }
