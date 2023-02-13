@@ -7,18 +7,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: baseline;
 }
 
- #container{
-    display:flex;
-    gap:50px;
-    flex-direction: column;
-} 
 
 .gameBoard{
     display: flex;
     flex-direction: column;
+    min-width: 500px;
 }
-
-
 .row{
     display: flex;
 }
@@ -26,6 +20,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     width:40px;
     height:40px;
     border: 1px solid black;
+    display: inline-block;
 }
 
 
@@ -43,5 +38,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 #Player{
     scale:0.5;
+    opacity: 0.8;
     pointer-events: none;
 }
