@@ -10,8 +10,7 @@ const Gamelogic = {
     this.changePlayer();
     if (this.Playerturn === false) { AI.attack(); }
     const winner = this.checkWinner();
-    if (winner) { console.log(winner, 'won'); }
-    resetGame();
+    if (winner) { console.log(winner, 'won'); resetGame(); }
   },
   changePlayer() {
     if (this.Playerturn) { this.Playerturn = false; } else { this.Playerturn = true; }
