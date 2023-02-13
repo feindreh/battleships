@@ -9,9 +9,17 @@ const Gamelogic = {
     updateGameboard();
     this.changePlayer();
     if (this.Playerturn === false) { AI.attack(); }
+    const winner = this.checkWinner();
+    if (winner) { console.log(winner, 'won'); }
+    resetGame();
   },
   changePlayer() {
     if (this.Playerturn) { this.Playerturn = false; } else { this.Playerturn = true; }
+  },
+  checkWinner() {
+    if (Player1.playerBoard.allSunk()) { return 'Player1'; }
+    if (Player2.playerBoard.allSunk()) { return 'Player2'; }
+    return false;
   },
 
 };
@@ -21,7 +29,11 @@ const makeSquare = (square) => {
 
   div.className = 'square';
   if (square.hit === true) {
-    if (square.ship === null) { div.className = 'noshiphit'; } else { div.className = 'shiphit'; }
+    if (square.ship === null) {
+      div.className = 'noshiphit';
+    } else if (square.ship.sunk) {
+      div.className = 'shipsunk';
+    } else { div.className = 'shiphit'; }
   }
 
   div.addEventListener('click', () => {
@@ -100,7 +112,10 @@ function updateGameboard() {
   }
   const board1 = makePlayerBoard(Player1);
   const board2 = makePlayerBoard(Player2);
-  container.append(board1, board2);
+  container.append(board2, board1);
 }
 
 updateGameboard();
+function resetGame() {
+  console.log('game reset');
+}
