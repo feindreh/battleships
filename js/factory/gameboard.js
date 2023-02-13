@@ -33,6 +33,18 @@ const gameBoard = () => ({
     let x = start[0];
     let y = start[1];
 
+    // check for valid squares
+    for (let i = 0; i < ship.length; i++) {
+      if (x >= 10 || x < 0 || y >= 10 || y < 0) { throw 'Invalid place'; }
+      if (this.board[x][y].ship !== null) { throw 'already a ship'; }
+
+      if (direction === 'up') { y++; }
+      if (direction === 'right') { x++; }
+    }
+    // place ship
+    x = start[0];
+    y = start[1];
+
     for (let i = 0; i < ship.length; i++) {
       this.board[x][y].ship = ship;
       if (direction === 'up') { y++; }
