@@ -1,70 +1,8 @@
 import shipfactory from './factory/ships.js';
+import Gamelogic from './Gamelogic.js';
 import Player from './factory/player.js';
 
 const ships = shipfactory();
-
-const Gamelogic = {
-  Playerturn: true,
-  makeTurn() {
-    updateGameboard();
-    this.changePlayer();
-    if (this.Playerturn === false) { AI.attack(); }
-    const winner = this.checkWinner();
-    if (winner) { console.log(winner, 'won'); resetGame(); }
-  },
-  changePlayer() {
-    if (this.Playerturn) { this.Playerturn = false; } else { this.Playerturn = true; }
-  },
-  checkWinner() {
-    if (Player1.playerBoard.allSunk()) { return 'Player1'; }
-    if (Player2.playerBoard.allSunk()) { return 'Player2'; }
-    return false;
-  },
-
-};
-
-const makeSquare = (square) => {
-  const div = document.createElement('div');
-
-  div.className = 'square';
-  if (square.hit === true) {
-    if (square.ship === null) {
-      div.className = 'noshiphit';
-    } else if (square.ship.sunk) {
-      div.className = 'shipsunk';
-    } else { div.className = 'shiphit'; }
-  }
-
-  div.addEventListener('click', () => {
-    if (square.hit === false) {
-      square.getHit();
-      Gamelogic.makeTurn();
-    }
-  });
-  return div;
-};
-
-const makeRow = () => {
-  const row = document.createElement('div');
-  row.className = 'row';
-  return row;
-};
-
-const makePlayerBoard = (player) => {
-  const container = document.createElement('div');
-  container.id = `${player.name}`;
-  container.className = 'gameBoard';
-
-  for (let y = 9; y >= 0; y--) {
-    const row = makeRow();
-    for (let x = 0; x <= 9; x++) {
-      row.append(makeSquare(player.playerBoard.board[x][y]));
-    }
-    container.append(row);
-  }
-
-  return container;
-};
 
 const Player1 = Player('Player');
 const Player2 = Player('Computer');
@@ -104,17 +42,7 @@ const computerAi = (Enemy) => ({
 
 const AI = computerAi(Player1);
 
-function updateGameboard() {
-  const container = document.querySelector('#container');
-  while (container.firstChild) {
-    container.firstChild.remove();
-  }
-  const board1 = makePlayerBoard(Player1);
-  const board2 = makePlayerBoard(Player2);
-  container.append(board2, board1);
-}
-
-updateGameboard();
-function resetGame() {
-  console.log('game reset');
-}
+Gamelogic.player1 = Player1;
+Gamelogic.player2 = Player2;
+Gamelogic.AI = AI;
+Gamelogic.updateGameboard(Player1, Player2, Gamelogic);
