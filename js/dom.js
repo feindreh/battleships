@@ -1,5 +1,3 @@
-import Gamelogic from './Gamelogic.js';
-
 export const makeSquare = (square, logik) => {
   const div = document.createElement('div');
 
