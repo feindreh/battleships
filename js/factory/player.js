@@ -1,8 +1,8 @@
-import makeBoard from './gameboard.js';
+import gameBoard from './gameboard.js';
 
 const Player = (name) => ({
   name,
-  playerBoard: makeBoard(),
+  playerBoard: gameBoard(),
   getAttacked(coords) {
     this.playerBoard.receiveAttack(coords);
   },
