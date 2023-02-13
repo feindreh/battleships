@@ -22,22 +22,6 @@ const Gamelogic = {
   player1: undefined,
   player2: undefined,
   AI: undefined,
-  ships: undefined,
-  placeShips(player) {
-    if (player.human === false) { this.placeRandomShips(player); }
-    this.place(player);
-  },
-  placeRandomShips(player) {
-    player.playerBoard.placeShip(this.ships.battleship(), [2, 0], 'right');
-    player.playerBoard.placeShip(this.ships.carrier(), [2, 2], 'right');
-    player.playerBoard.placeShip(this.ships.destroyer(), [2, 4], 'right');
-    player.playerBoard.placeShip(this.ships.patrolBoat(), [0, 6], 'right');
-    player.playerBoard.placeShip(this.ships.submarine(), [0, 8], 'right');
-  },
-  place(player) {
-    // generate board
-  },
-
 };
 
 function resetGame() {
