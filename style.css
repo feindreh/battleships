@@ -16,7 +16,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .row{
     display: flex;
 }
-.square,.noshiphit,.shiphit,.shipsunk{
+.square,.noshiphit,.shiphit,.shipsunk,.shipplaced{
     width:40px;
     height:40px;
     border: 1px solid black;
@@ -34,6 +34,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 .shipsunk{
     background-color: rgb(12, 65, 209);
+}
+.shipplaced{
+    background-color: greenyellow;
+    border: 1px solid green;
 }
 
 #Player{
