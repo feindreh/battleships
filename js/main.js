@@ -1,16 +1,33 @@
 import shipfactory from './factory/ships.js';
 import Player from './factory/player.js';
 
+const ships = shipfactory();
+
+const Gamelogic = {
+  Playerturn: true,
+  makeTurn() {
+    updateGameboard();
+    this.changePlayer();
+    if (this.Playerturn === false) { AI.attack(); }
+  },
+  changePlayer() {
+    if (this.Playerturn) { this.Playerturn = false; } else { this.Playerturn = true; }
+  },
+
+};
+
 const makeSquare = (square) => {
   const div = document.createElement('div');
 
   div.className = 'square';
+  if (square.hit === true) {
+    if (square.ship === null) { div.className = 'noshiphit'; } else { div.className = 'shiphit'; }
+  }
 
   div.addEventListener('click', () => {
     if (square.hit === false) {
       square.getHit();
-      if (square.ship === null) { div.className = 'noshiphit'; }
-      if (square.ship !== null) { div.className = 'shiphit'; }
+      Gamelogic.makeTurn();
     }
   });
   return div;
@@ -37,12 +54,8 @@ const makePlayerBoard = (player) => {
   return container;
 };
 
-const ships = shipfactory();
-
-const container = document.querySelector('#container');
-
-const Player1 = Player('Player1');
-const Player2 = Player('Player2');
+const Player1 = Player('Player');
+const Player2 = Player('Computer');
 
 Player1.playerBoard.placeShip(ships.battleship(), [0, 0], 'right');
 Player1.playerBoard.placeShip(ships.carrier(), [0, 2], 'right');
@@ -56,5 +69,37 @@ Player2.playerBoard.placeShip(ships.destroyer(), [0, 4], 'right');
 Player2.playerBoard.placeShip(ships.patrolBoat(), [0, 6], 'right');
 Player2.playerBoard.placeShip(ships.submarine(), [0, 8], 'right');
 
-container.append(makePlayerBoard(Player1));
-container.append(makePlayerBoard(Player2));
+const getRandomFreeField = (enemy) => {
+  let x = Math.floor(Math.random() * 8);
+  let y = Math.floor(Math.random() * 8);
+
+  while (enemy.playerBoard.board[x][y].hit === true) {
+    if (x === 7) { x = 0; y += 1; } else {
+      x += 1;
+    }
+  }
+  return [x, y];
+};
+
+const computerAi = (Enemy) => ({
+  Enemy,
+  attack() {
+    this.Enemy.getAttacked(getRandomFreeField(this.Enemy));
+    Gamelogic.makeTurn();
+  },
+
+});
+
+const AI = computerAi(Player1);
+
+function updateGameboard() {
+  const container = document.querySelector('#container');
+  while (container.firstChild) {
+    container.firstChild.remove();
+  }
+  const board1 = makePlayerBoard(Player1);
+  const board2 = makePlayerBoard(Player2);
+  container.append(board1, board2);
+}
+
+updateGameboard();
