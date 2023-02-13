@@ -41,6 +41,7 @@ const makeRow = () => {
 
 const makePlayerBoard = (player) => {
   const container = document.createElement('div');
+  container.id = `${player.name}`;
   container.className = 'gameBoard';
 
   for (let y = 9; y >= 0; y--) {
