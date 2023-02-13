@@ -7,9 +7,11 @@ const makeSquare = (square) => {
   div.className = 'square';
 
   div.addEventListener('click', () => {
-    if (square.hit === false) { square.getHit(); }
-    if (square.ship === null) { div.className = 'noshiphit'; }
-    if (square.ship !== null) { div.className = 'shiphit'; }
+    if (square.hit === false) {
+      square.getHit();
+      if (square.ship === null) { div.className = 'noshiphit'; }
+      if (square.ship !== null) { div.className = 'shiphit'; }
+    }
   });
   return div;
 };
