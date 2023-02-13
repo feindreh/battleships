@@ -1,4 +1,4 @@
-export const makeSquare = (square, logik) => {
+const makeSquare = (square, logik) => {
   const div = document.createElement('div');
 
   div.className = 'square';
@@ -19,13 +19,13 @@ export const makeSquare = (square, logik) => {
   return div;
 };
 
-export const makeRow = () => {
+const makeRow = () => {
   const row = document.createElement('div');
   row.className = 'row';
   return row;
 };
 
-export const makePlayerBoard = (player, logik) => {
+const makePlayerBoard = (player, logik) => {
   const container = document.createElement('div');
   container.id = `${player.name}`;
   container.className = 'gameBoard';
