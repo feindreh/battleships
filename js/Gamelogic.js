@@ -1,4 +1,5 @@
 import { updateGameboard } from './dom.js';
+import placeBattleship, { undoButton } from './placeships.js';
 
 const Gamelogic = {
   Playerturn: true,
@@ -7,7 +8,7 @@ const Gamelogic = {
     this.changePlayer();
     if (this.Playerturn === false) { this.AI.attack(); }
     const winner = this.checkWinner();
-    if (winner) { console.log(winner, 'won'); resetGame(); }
+    if (winner) { console.log(winner, 'won'); this.phaseThree(); }
   },
   changePlayer() {
     if (this.Playerturn) { this.Playerturn = false; } else { this.Playerturn = true; }
@@ -21,13 +22,25 @@ const Gamelogic = {
   player1: undefined,
   player2: undefined,
   AI: undefined,
-  startGame() {
+  phaseOne() {
+    document.querySelector('#undo').style.visibility = 'visible';
+    document.querySelector('#rotate').style.visibility = 'visible';
+    document.querySelector('#start').style.visibility = 'visible';
+    placeBattleship(this.player1);
+    placeBattleship(this.player2);
+  },
+  phaseTwo() {
+    document.querySelector('#undo').style.visibility = 'hidden';
+    document.querySelector('#rotate').style.visibility = 'hidden';
+    document.querySelector('#start').style.visibility = 'hidden';
     this.updateGameboard(this.player1, this.player2, this);
   },
+  phaseThree() {
+    alert('PHASE 3');
+  },
+  bindUnDo(player) {
+    undoButton(player);
+  },
 };
-
-function resetGame() {
-  console.log('game reset');
-}
 
 export default Gamelogic;
