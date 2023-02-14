@@ -46,6 +46,7 @@ function plpatrol(square, player) {
   lastChange = 'patrol boat';
   lastCallback = plpatrol;
   showBoard(player, (square) => { console.log(square); });
+  document.querySelector('#start').style.visibility = 'visible';
 }
 
 function placeBattleship(player) {

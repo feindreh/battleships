@@ -29,9 +29,9 @@ const Gamelogic = {
   phaseOne() {
     document.querySelector('#blackbox').style.visibility = 'hidden';
     document.querySelector('#prompt').style.visibility = 'hidden';
+    document.querySelector('#start').style.visibility = 'hidden';
     document.querySelector('#undo').style.visibility = 'visible';
     document.querySelector('#rotate').style.visibility = 'visible';
-    document.querySelector('#start').style.visibility = 'visible';
     this.player1.playerBoard.unhitBoard();
     this.player2.playerBoard.unhitBoard();
     placeBattleship(this.player1);
