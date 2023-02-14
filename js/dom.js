@@ -60,7 +60,11 @@ const makeShowSquare = (square, callback, player) => {
   });
   return div;
 };
-
+function deleteChildren(target) {
+  while (target.firstChild) {
+    target.firstChild.remove();
+  }
+}
 export function showBoard(player, callback) {
   const container = document.querySelector('#container');
   deleteChildren(container);
@@ -75,10 +79,4 @@ export function showBoard(player, callback) {
     wrap.append(row);
   }
   container.append(wrap);
-}
-
-function deleteChildren(target) {
-  while (target.firstChild) {
-    target.firstChild.remove();
-  }
 }

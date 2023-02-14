@@ -1,6 +1,9 @@
 import shipfactory from './factory/ships.js';
 import { showBoard } from './dom.js';
 
+let lastChange = 'nothing';
+let lastCallback = plCarrier;
+
 function placeRandom(player) {
   player.playerBoard.placeShip(shipfactory().carrier(), [0, 0], 'right');
   player.playerBoard.placeShip(shipfactory().battleship(), [0, 2], 'right');
@@ -9,35 +12,35 @@ function placeRandom(player) {
   player.playerBoard.placeShip(shipfactory().patrolBoat(), [0, 8], 'right');
 }
 function plCarrier(square, player) {
-  player.playerBoard.placeShip(shipfactory().carrier(), [square.x, square.y], 'right');
+  player.playerBoard.placeShip(shipfactory().carrier(), [square.x, square.y], direction);
   lastChange = 'carrier';
   lastCallback = plCarrier;
   showBoard(player, (square, player) => { plBattle(square, player); });
 }
 
 function plBattle(square, player) {
-  player.playerBoard.placeShip(shipfactory().battleship(), [square.x, square.y], 'right');
+  player.playerBoard.placeShip(shipfactory().battleship(), [square.x, square.y], direction);
   lastChange = 'battleship';
   lastCallback = plBattle;
   showBoard(player, (square, player) => { plSub(square, player); });
 }
 
 function plSub(square, player) {
-  player.playerBoard.placeShip(shipfactory().submarine(), [square.x, square.y], 'right');
+  player.playerBoard.placeShip(shipfactory().submarine(), [square.x, square.y], direction);
   lastChange = 'submarine';
   lastCallback = plSub;
   showBoard(player, (square, player) => { pldestroyer(square, player); });
 }
 
 function pldestroyer(square, player) {
-  player.playerBoard.placeShip(shipfactory().destroyer(), [square.x, square.y], 'right');
+  player.playerBoard.placeShip(shipfactory().destroyer(), [square.x, square.y], direction);
   lastChange = 'destroyer';
   lastCallback = pldestroyer;
   showBoard(player, (square, player) => { plpatrol(square, player); });
 }
 
 function plpatrol(square, player) {
-  player.playerBoard.placeShip(shipfactory().patrolBoat(), [square.x, square.y], 'right');
+  player.playerBoard.placeShip(shipfactory().patrolBoat(), [square.x, square.y], direction);
   lastChange = 'patrol boat';
   lastCallback = plpatrol;
   showBoard(player, (square) => { console.log(square); });
@@ -138,8 +141,10 @@ function getlastCallback(name) {
   }
 }
 
-let lastChange = 'nothing';
-let lastCallback = plCarrier;
+let direction = 'right';
+document.querySelector('#rotate').addEventListener('click', () => {
+  if (direction === 'right') { direction = 'up'; } else { direction = 'right'; }
+});
 
 function undoButton(player) {
   document.querySelector('#undo').addEventListener('click', () => {
