@@ -7,7 +7,6 @@ const Gamelogic = {
     this.changePlayer();
     if (this.Playerturn === false) { this.AI.attack(); }
     const winner = this.checkWinner();
-    console.log(winner);
     if (winner) { console.log(winner, 'won'); resetGame(); }
   },
   changePlayer() {
@@ -22,6 +21,9 @@ const Gamelogic = {
   player1: undefined,
   player2: undefined,
   AI: undefined,
+  startGame() {
+    this.updateGameboard(this.player1, this.player2, this);
+  },
 };
 
 function resetGame() {
