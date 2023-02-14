@@ -19,13 +19,32 @@ Gamelogic.ships = ships;
 // Phase 1 Place
 
 function placeBattleship(player) {
-  showBoard(player, plCarrier);
+  if (player.human === false) {
+    placeRandom(player);
+  } else {
+    showBoard(player, plCarrier);
+  }
+}
+
+function placeRandom(player) {
+  player.playerBoard.placeShip(ships.carrier(), [0, 0], 'right');
+  player.playerBoard.placeShip(ships.battleship(), [0, 2], 'right');
+  player.playerBoard.placeShip(ships.destroyer(), [0, 4], 'right');
+  player.playerBoard.placeShip(ships.submarine(), [0, 6], 'right');
+  player.playerBoard.placeShip(ships.patrolBoat(), [0, 8], 'right');
 }
 
 placeBattleship(Player1);
+placeBattleship(Player2);
 
 const undo = document.querySelector('#undo');
 const rotate = document.querySelector('#rotate');
+const start = document.querySelector('#start');
+start.addEventListener('click', () => {
+  startGame();
+});
+
+// placephase
 let lastChange = 'nothing';
 const activePlayer = Player1;
 let lastCallback = plCarrier;
@@ -116,7 +135,6 @@ function getlastChangeminus(name) {
 }
 
 function getlastCallback(name) {
-  console.log(name);
   let current;
   switch (name) {
     case 'nothing':
@@ -159,4 +177,11 @@ function getlastCallback(name) {
     default:
       throw 'switch callback current broken';
   }
+}
+
+function startGame() {
+  undo.style.visibility = 'hidden';
+  start.style.visibility = 'hidden';
+  rotate.style.visibility = 'hidden';
+  Gamelogic.startGame();
 }
