@@ -1,4 +1,4 @@
-import dragShip from './generateShip.js';
+import dragShip, { DragDrop } from './generateShip.js';
 
 const makeSquare = (square, logik) => {
   const div = document.createElement('div');
@@ -60,6 +60,10 @@ const makeShowSquare = (square, callback, player) => {
   div.addEventListener('click', () => {
     callback(square, player);
   });
+  div.addEventListener('dragover', () => {
+    DragDrop.targetX = square.x;
+    DragDrop.targetY = square.y;
+  });
   return div;
 };
 function deleteChildren(target) {
@@ -84,3 +88,5 @@ export function showBoard(player, callback, length, direction) {
   deleteChildren(document.querySelector('#dragwrap'));
   document.querySelector('#dragwrap').append(dragShip(length, direction));
 }
+
+export { DragDrop };
