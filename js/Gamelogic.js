@@ -1,6 +1,10 @@
 import { updateGameboard } from './dom.js';
 import placeBattleship, { undoButton } from './placeships.js';
 
+document.querySelector('#restart').addEventListener('click', () => {
+  Gamelogic.phaseOne();
+});
+
 const Gamelogic = {
   Playerturn: true,
   makeTurn() {
@@ -23,6 +27,8 @@ const Gamelogic = {
   player2: undefined,
   AI: undefined,
   phaseOne() {
+    document.querySelector('#blackbox').style.visibility = 'hidden';
+    document.querySelector('#prompt').style.visibility = 'hidden';
     document.querySelector('#undo').style.visibility = 'visible';
     document.querySelector('#rotate').style.visibility = 'visible';
     document.querySelector('#start').style.visibility = 'visible';
