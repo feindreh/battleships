@@ -45,3 +45,34 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     opacity: 0.8;
     pointer-events: none;
 }
+
+
+#blackbox,#prompt{
+    position: absolute;
+    visibility: hidden;
+}
+
+#blackbox{
+    background-color: rgb(26, 113, 170);
+    opacity: 0.7;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+}
+
+#prompt{
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top:50%;
+
+    background-color: white;
+    border:black solid 2px;
+    width:fit-content;
+    padding:10px;
+    border-radius: 15px;
+    font-size: 30px;
+}

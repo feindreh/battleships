@@ -36,7 +36,8 @@ const Gamelogic = {
     this.updateGameboard(this.player1, this.player2, this);
   },
   phaseThree() {
-    alert('PHASE 3');
+    document.querySelector('#blackbox').style.visibility = 'visible';
+    document.querySelector('#prompt').style.visibility = 'visible';
   },
   bindUnDo(player) {
     undoButton(player);
