@@ -34,9 +34,6 @@ function placeRandom(player) {
   player.playerBoard.placeShip(ships.patrolBoat(), [0, 8], 'right');
 }
 
-placeBattleship(Player1);
-placeBattleship(Player2);
-
 const undo = document.querySelector('#undo');
 const rotate = document.querySelector('#rotate');
 const start = document.querySelector('#start');
@@ -185,3 +182,6 @@ function startGame() {
   rotate.style.visibility = 'hidden';
   Gamelogic.startGame();
 }
+
+placeBattleship(Player1);
+placeBattleship(Player2);
