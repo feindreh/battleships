@@ -78,6 +78,17 @@ const gameBoard = () => ({
       }
     }
   },
+  unhitBoard() {
+    this.board.forEach((row) => {
+      row.forEach((squa) => {
+        squa.hit = false;
+        if (squa.ship !== null) {
+          squa.ship.sunk = false;
+          squa.ship.hits = squa.ship.length;
+        }
+      });
+    });
+  },
 });
 
 export default gameBoard;

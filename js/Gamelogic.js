@@ -32,6 +32,8 @@ const Gamelogic = {
     document.querySelector('#undo').style.visibility = 'visible';
     document.querySelector('#rotate').style.visibility = 'visible';
     document.querySelector('#start').style.visibility = 'visible';
+    this.player1.playerBoard.unhitBoard();
+    this.player2.playerBoard.unhitBoard();
     placeBattleship(this.player1);
     placeBattleship(this.player2);
   },
