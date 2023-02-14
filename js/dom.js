@@ -66,6 +66,7 @@ export function showBoard(player, callback) {
   deleteChildren(container);
   const Board = player.playerBoard.board;
   const wrap = document.createElement('div');
+  wrap.className = 'gameBoard';
   for (let y = 9; y >= 0; y--) {
     const row = makeRow();
     for (let x = 0; x < Board.length; x++) {

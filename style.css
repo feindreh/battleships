@@ -11,7 +11,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .gameBoard{
     display: flex;
     flex-direction: column;
-    min-width: 500px;
+    border: 2px solid rgb(0, 0, 0);
+    width:fit-content;
 }
 .row{
     display: flex;
@@ -19,7 +20,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .square,.noshiphit,.shiphit,.shipsunk,.shipplaced{
     width:40px;
     height:40px;
-    border: 1px solid black;
+    border: 2px solid black;
     display: inline-block;
 }
 
