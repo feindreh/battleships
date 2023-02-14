@@ -98,7 +98,7 @@ function getlastChangeminus(name) {
   }
 }
 
-function getlastCallback(name) {
+function getlastCallback(name, difference = 0) {
   let current;
   switch (name) {
     case 'nothing':
@@ -122,6 +122,7 @@ function getlastCallback(name) {
     default:
       throw 'switch callback name broken';
   }
+  current += difference;
   switch (current) {
     case 0:
       return plCarrier;
@@ -175,7 +176,7 @@ let direction = 'right';
 function directionButton(player) {
   document.querySelector('#rotate').addEventListener('click', () => {
     if (direction === 'right') { direction = 'up'; } else { direction = 'right'; }
-    showBoard(player, lastCallback, getlastNumber(lastChange), direction);
+    showBoard(player, getlastCallback(lastChange), getlastNumber(lastChange), direction);
   });
 }
 
