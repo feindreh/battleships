@@ -67,6 +67,17 @@ const gameBoard = () => ({
     });
     return sunk;
   },
+  removeShip(name) {
+    for (let x = 0; x <= 9; x++) {
+      for (let y = 0; y <= 9; y++) {
+        if (this.board[x][y].ship !== null) {
+          if (this.board[x][y].ship.name === name) {
+            this.board[x][y].ship = null;
+          }
+        }
+      }
+    }
+  },
 });
 
 export default gameBoard;
