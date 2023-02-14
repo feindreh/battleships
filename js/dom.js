@@ -1,3 +1,5 @@
+import dragShip from './generateShip.js';
+
 const makeSquare = (square, logik) => {
   const div = document.createElement('div');
 
@@ -65,7 +67,7 @@ function deleteChildren(target) {
     target.firstChild.remove();
   }
 }
-export function showBoard(player, callback) {
+export function showBoard(player, callback, length, direction) {
   const container = document.querySelector('#container');
   deleteChildren(container);
   const Board = player.playerBoard.board;
@@ -79,4 +81,5 @@ export function showBoard(player, callback) {
     wrap.append(row);
   }
   container.append(wrap);
+  container.append(dragShip(length, direction));
 }

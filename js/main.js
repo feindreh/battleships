@@ -18,5 +18,5 @@ document.querySelector('#start').addEventListener('click', () => {
 });
 
 Gamelogic.bindUnDo(Gamelogic.player1);
-
+Gamelogic.bindDirection(Gamelogic.player1);
 Gamelogic.phaseOne();

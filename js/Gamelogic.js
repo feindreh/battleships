@@ -1,5 +1,5 @@
 import { updateGameboard } from './dom.js';
-import placeBattleship, { undoButton } from './placeships.js';
+import placeBattleship, { undoButton, directionButton } from './placeships.js';
 
 document.querySelector('#restart').addEventListener('click', () => {
   Gamelogic.phaseOne();
@@ -49,6 +49,9 @@ const Gamelogic = {
   },
   bindUnDo(player) {
     undoButton(player);
+  },
+  bindDirection(player) {
+    directionButton(player);
   },
 };
 
