@@ -81,5 +81,6 @@ export function showBoard(player, callback, length, direction) {
     wrap.append(row);
   }
   container.append(wrap);
-  container.append(dragShip(length, direction));
+  deleteChildren(document.querySelector('#dragwrap'));
+  document.querySelector('#dragwrap').append(dragShip(length, direction));
 }
